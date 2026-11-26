@@ -1,0 +1,11 @@
+node_modules/
+__pycache__/
+# secrets and each server's own state: never commit
+.signal-secret
+.reserved-circles.json
+.youtube-api-key
+.oracle_deploy_cache.json
+quick-picks-cache.json
+*.pem
+*.key
+.env

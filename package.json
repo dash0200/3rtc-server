@@ -1,0 +1,29 @@
+{
+  "name": "webrtc-signaling-server",
+  "version": "1.0.0",
+  "description": "Lightweight WebSocket signaling server for WebRTC P2P offer, answer, and ICE candidate exchange",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test \"tests/*.test.js\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "webrtc",
+    "signaling",
+    "websocket",
+    "p2p"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/ws": "^8.5.14",
+    "typescript": "~6.0.2"
+  }
+}

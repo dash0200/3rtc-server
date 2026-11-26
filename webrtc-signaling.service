@@ -1,0 +1,27 @@
+# systemd unit for the 3RTC signaling server (installed by deploy_gcp.py on create and on update).
+# Runs as its own unprivileged user; only Caddy (ports 80/443/8443) is reachable from outside, so
+# Node listens on localhost only.
+[Unit]
+Description=3RTC WebRTC Signaling Server
+After=network.target
+
+[Service]
+Type=simple
+User=webrtc
+Group=webrtc
+WorkingDirectory=/opt/webrtc-server
+ExecStart=/usr/bin/node server.js
+Restart=always
+RestartSec=3
+Environment=PORT=8080
+Environment=HOST=127.0.0.1
+Environment=NODE_ENV=production
+# Hardening: no privilege gain, read-only system, writes only to its own folder
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/opt/webrtc-server
+
+[Install]
+WantedBy=multi-user.target
